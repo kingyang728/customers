@@ -38,7 +38,7 @@ docker:
       alias: customers
   stage: build
   image: alpine
-    before_script:
-      - apk --no-cache add curl
-    script:
-      - curl http://customers:5000/customers/ | grep "John"
+  before_script:
+    - apk --no-cache add curl
+  script:
+    - curl http://customers:5000/customers/ | grep "John"
