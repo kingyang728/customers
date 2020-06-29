@@ -2,14 +2,14 @@ package com.vdespa.customers;
 
 public class Customer {
     long id;
-    String firstName;
+    String fistName;
     String lastName;
     String title;
     String gender;
 
-    public Customer(long id, String firstName, String lastName, String title, String gender) {
+    public Customer(long id, String fistName, String lastName, String title, String gender) {
         this.id = id;
-        this.firstName = firstName;
+        this.fistName = fistName;
         this.lastName = lastName;
         this.title = title;
         this.gender = gender;
@@ -23,12 +23,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFistName() {
+        return fistName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFistName(String fistName) {
+        this.fistName = fistName;
     }
 
     public String getLastName() {
