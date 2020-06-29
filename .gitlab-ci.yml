@@ -36,7 +36,7 @@ postman:
   services:
     - name: $CI_REGISTRY/$CI_REGISTRY_IMAGE
       alias: customers
-  stage: build
+  stage: api test
   image: alpine
   before_script:
     - apk --no-cache add curl
