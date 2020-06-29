@@ -42,3 +42,4 @@ postman:
     - echo $CI_REGISTRY_IMAGE
     - newman --version
     - newman run "./api-tests/[API tests] Customers Service.postman_collection.json" --environment "./api-tests/Customers Service Github Docker.postman_environment.json"
+    - node ./contract-tests/run-collections-in-directory.js
