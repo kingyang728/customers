@@ -1,6 +1,6 @@
 stages:
   - compile
-  - unit test
+  - test
   - docker
 
 
