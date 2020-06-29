@@ -34,7 +34,7 @@ docker:
 
 .postman:
   services:
-    - name: $CI_REGISTRY/group/project/docker:19.03.11-dind
+    - name: $CI_REGISTRY/$CI_REGISTRY_IMAGE
       alias: customers
   stage: build
   image: alpine
