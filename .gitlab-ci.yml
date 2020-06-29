@@ -34,7 +34,7 @@ docker:
 
 postman:
   services:
-    - name: $CI_REGISTRY/$CI_REGISTRY_IMAGE
+    - name: $CI_REGISTRY_IMAGE
       alias: customers
   stage: api test
   image: alpine
