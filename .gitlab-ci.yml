@@ -4,7 +4,6 @@ stages:
   - docker
   - api test
 
-
 build jar:
   stage: compile
   image: openjdk:12-alpine
@@ -37,8 +36,9 @@ postman:
     - name: $CI_REGISTRY_IMAGE
       alias: customers
   stage: api test
-  image: alpine
-  before_script:
-    - apk --no-cache add curl
+  image:
+    name: vdespa/newman
+    entrypoint: [""]
   script:
-    - curl http://customers:5000/customers/ | grep "John"
+    - newman --version
+    - newman run "./api-tests/[API tests] Customers Service.postman_collection.json" --environment "./api-tests/Customers Service Github Docker.postman_environment"
