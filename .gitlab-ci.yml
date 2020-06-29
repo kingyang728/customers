@@ -1,7 +1,8 @@
 stages:
   - compile
-  - test
+  - unit test
   - docker
+  - api test
 
 
 build jar:
@@ -9,10 +10,12 @@ build jar:
   image: openjdk:12-alpine
   script:
     - ./gradlew build -x test
-
+  artifacts:
+    paths:
+      - ./build/libs/
 
 junit:
-  stage: test
+  stage: unit test
   image: openjdk:12-alpine
   script:
     - ./gradlew test
@@ -28,3 +31,14 @@ docker:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
 
+
+.postman:
+  services:
+    - name: $CI_REGISTRY/group/project/docker:19.03.11-dind
+      alias: customers
+  stage: build
+  image: alpine
+    before_script:
+      - apk --no-cache add curl
+    script:
+      - curl http://customers:5000/customers/ | grep "John"
