@@ -32,7 +32,7 @@ docker:
 
 postman:
   services:
-    - name: $CI_REGISTRY_IMAGE
+    - name: $CI_REGISTRY_IMAGE:$CI_PIPELINE_IID
       alias: customers
   stage: api test
   image:
