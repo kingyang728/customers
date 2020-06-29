@@ -27,7 +27,7 @@ docker:
   before_script:
     - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker build --tag "customers:$CI_PIPELINE_IID" --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
 
 postman:
@@ -39,5 +39,6 @@ postman:
     name: vdespa/newman
     entrypoint: [""]
   script:
+    - echo $CI_REGISTRY_IMAGE
     - newman --version
     - newman run "./api-tests/[API tests] Customers Service.postman_collection.json" --environment "./api-tests/Customers Service Github Docker.postman_environment.json"
