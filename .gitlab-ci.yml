@@ -1,0 +1,30 @@
+stages:
+  - compile
+  - unit test
+  - docker
+
+
+build jar:
+  stage: compile
+  image: openjdk:12-alpine
+  script:
+    - ./gradlew build -x test
+
+
+junit:
+  stage: test
+  image: openjdk:12-alpine
+  script:
+    - ./gradlew test
+
+docker:
+  image: docker:latest
+  stage: docker
+  services:
+    - docker:dind
+  before_script:
+    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+
