@@ -3,6 +3,7 @@ stages:
   - unit test
   - docker
   - api test
+  - contract test
 
 build jar:
   stage: compile
@@ -39,7 +40,18 @@ postman:
     name: vdespa/newman
     entrypoint: [""]
   script:
-    - echo $CI_REGISTRY_IMAGE
     - newman --version
     - newman run "./api-tests/[API tests] Customers Service.postman_collection.json" --environment "./api-tests/Customers Service Github Docker.postman_environment.json"
+
+contract tests:
+  services:
+    - name: $CI_REGISTRY_IMAGE:$CI_PIPELINE_IID
+      alias: customers
+  stage: contract test
+  image:
+    name: vdespa/newman
+    entrypoint: [""]
+  script:
+    - newman --version
+    - export NODE_PATH=$(npm root --quiet -g)
     - node ./contract-tests/run-collections-in-directory.js
