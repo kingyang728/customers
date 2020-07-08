@@ -1,20 +1,20 @@
 {
 	"info": {
-		"_postman_id": "6b0b9c6c-e1d8-4518-937d-56030390d018",
-		"name": "[API tests] Customers Service",
+		"_postman_id": "54524d9a-9879-41f1-942b-841287cb9e40",
+		"name": "[Contract test] Customers Service by Billing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get all customers",
+			"name": "get Customer By Id",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "079fead5-e938-4ba2-8924-a0a3d8eea897",
+						"id": "d7d31c07-a718-44a7-9d87-c2c172e18a09",
 						"exec": [
 							"pm.test(\"Status code is 200\", () => {",
-							"    pm.response.to.have.status(201);",
+							"    pm.response.to.have.status(200);",
 							"});",
 							"",
 							"pm.test(\"Content-Type is JSON\", () => {",
@@ -27,12 +27,8 @@
 							"    \"definitions\": {",
 							"        \"customer\": {",
 							"            \"type\": \"object\",",
-							"            \"required\": [ \"id\", \"fistName\", \"lastName\", \"title\", \"gender\" ],",
+							"            \"required\": [ \"fistName\", \"lastName\", \"title\"],",
 							"            \"properties\": {",
-							"                \"id\": {",
-							"                    \"type\": \"number\",",
-							"                    \"description\": \"internal id\"",
-							"                },",
 							"                \"fistName\": {",
 							"                    \"type\": \"string\",",
 							"                    \"description\": \"First name\"",
@@ -44,11 +40,6 @@
 							"                \"title\": {",
 							"                    \"type\": \"string\",",
 							"                    \"description\": \"Title\"",
-							"                },",
-							"                \"gender\": {",
-							"                    \"type\": \"string\",",
-							"                    \"description\": \"Gender (male / female)\",",
-							"                    \"enum\": [\"male\", \"female\"]",
 							"                }",
 							"            }",
 							"        }",
@@ -67,12 +58,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/customers",
+					"raw": "{{url}}/customers/",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"customers"
+						"customers",
+						""
 					]
 				}
 			},
