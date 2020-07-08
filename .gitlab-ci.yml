@@ -9,8 +9,6 @@ build jar:
   stage: compile
   image: openjdk:12-alpine
   script:
-    - apk add curl
-    - curl -v https://registry.gitlab.com/v2/
     - ./gradlew build -x test
   artifacts:
     paths:
