@@ -16,12 +16,12 @@ public class CustomersController {
     private CustomerRepository repository;
 
     @GetMapping
-    public List<Customer> geCustomers() {
+    public List<Customer> getCustomers() {
         return repository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    public Customer getById(@PathVariable("id") long id) {
+    public Customer getCustomerById(@PathVariable("id") long id) {
         return repository.findById(id);
     }
 }
