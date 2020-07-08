@@ -53,9 +53,6 @@ contract tests:
     entrypoint: [""]
   script:
     - newman --version
-    - echo $NODE_PATH
     - export NODE_PATH=$(npm root --quiet -g)
     - echo $NODE_PATH
-    - cd $NODE_PATH
-    - ls
-    #- node ./contract-tests/run-collections-in-directory.js
+    - node ./contract-tests/run-collections-in-directory.js
