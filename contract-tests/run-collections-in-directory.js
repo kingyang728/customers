@@ -24,7 +24,7 @@ fs.readdir('./contract-tests', function (err, files) {
                 console.error('Collection run encountered an error.');
             }
             if (summary.run.failures.length > 0) {
-                console.error(`Running the collection ${file} ended with errors`);
+                throw new Error(`Running the collection ${file} ended with errors`);
             }
             else {
                 console.log('Collection run completed.');
