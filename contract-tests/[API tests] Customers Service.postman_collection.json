@@ -14,7 +14,7 @@
 						"id": "079fead5-e938-4ba2-8924-a0a3d8eea897",
 						"exec": [
 							"pm.test(\"Status code is 200\", () => {",
-							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.status(201);",
 							"});",
 							"",
 							"pm.test(\"Content-Type is JSON\", () => {",
