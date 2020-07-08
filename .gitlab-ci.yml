@@ -24,7 +24,7 @@ docker:
   image: docker:latest
   stage: docker
   services:
-    - docker:19.03.12-dind
+    - docker:19.03.11-dind
   before_script:
     - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
